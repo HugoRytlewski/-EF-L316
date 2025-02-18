@@ -28,6 +28,8 @@
 
             {% for comment in subject.comments %}
                 <p>{{comment.content}}</p>
+                    <a  href="{{ path('app_comments_edit', {'id': comment.id}) }}">Editer</a>
+
                 {% if admin is same as(1) %}
                 {% endif %}
                     <a  href="{{ path('comment_remove', {'id': comment.id}) }}">Supprimer</a>

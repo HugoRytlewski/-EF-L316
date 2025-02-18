@@ -60,6 +60,8 @@ final class FrontController extends AbstractController
     #[Route('/show/{$id}', name: 'subject_show')]
     public function show(SubjectRepository $subject , Request $request,EntityManagerInterface $entityManager) : Response
     {
+
+        $user = $this->getUser();
         $subjectSelected = $request->get('id');
         $subjectDetail = $subject->find($subjectSelected);
         $admin=0;
@@ -70,6 +72,7 @@ final class FrontController extends AbstractController
             'controller_name' => 'FrontController',
             'subject' => $subjectDetail,
             'admin' => $admin,
+            'user' => $user ,
         ]);
       
     }
