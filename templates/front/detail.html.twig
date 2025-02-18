@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello FrontController!{% endblock %}
+
+{% block body %}
+
+<div class="page">
+    <div class="subject">
+        <h2>{{ subject.title }} </h2>
+        <p>{{subject.content}}</p>
+
+        <div>
+            <p>Ajouter un commentaire</p>
+            <form action="{{ path('comment_create', {'id': subject.id}) }}" method="post">
+                <div>
+                    <label for="comment_content">Commentaire</label>
+                    <textarea id="comment_content" name="comment_content" required></textarea>
+                </div>
+                <div>
+                    <button type="submit">Envoyer</button>
+                </div>
+            </form>
+
+            <a href="{{ path('like_add', {'id': subject.id}) }}">Liker</a>
+            <a href="{{ path('like_remove', {'id': subject.id}) }}">Enlever le like</a>
+
+
+
+            {% for comment in subject.comments %}
+                <p>{{comment.content}}</p>
+                {% if admin is same as(1) %}
+                {% endif %}
+                    <a  href="{{ path('comment_remove', {'id': comment.id}) }}">Supprimer</a>
+                {% endfor %}
+        </div>
+       
+        
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello FrontController!{% endblock %}
+
+{% block body %}
+
+<div class="page">
+    {%  for subject in subjects %}
+    <div class="subject">
+        <h2>{{ subject.title }} </h2>
+        <p>{{subject.content}}</p>
+        {% if subject.isReported %}
+        <p class="signalé">Signalé</p>
+        {% else %}
+        <a  href="{{ path('subject_report', {'id': subject.id}) }}">Signaler</a>
+        {% endif %}
+        <a href="{{ path('subject_show', {'id': subject.id}) }}">Voir le post</a>
+        
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

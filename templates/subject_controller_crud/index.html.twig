@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Subject index{% endblock %}
+
+{% block body %}
+    <h1>Subject index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Content</th>
+                <th>IsReported</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for subject in subjects %}
+            <tr>
+                <td>{{ subject.id }}</td>
+                <td>{{ subject.title }}</td>
+                <td>{{ subject.content }}</td>
+                <td>{{ subject.isReported ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('app_subject_controller_crud_show', {'id': subject.id}) }}">show</a>
+                    <a href="{{ path('app_subject_controller_crud_edit', {'id': subject.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_subject_controller_crud_new') }}">Create new</a>
+{% endblock %}
