@@ -46,7 +46,7 @@ class Comments
         return $this->idUser;
     }
 
-    public function addIdUser(user $idUser): static
+    public function addIdUser(User $idUser): static
     {
         if (!$this->idUser->contains($idUser)) {
             $this->idUser->add($idUser);
@@ -55,7 +55,7 @@ class Comments
         return $this;
     }
 
-    public function removeIdUser(user $idUser): static
+    public function removeIdUser(User $idUser): static
     {
         $this->idUser->removeElement($idUser);
 
