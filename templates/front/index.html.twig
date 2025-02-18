@@ -5,6 +5,7 @@
 {% block body %}
 
 <div class="page">
+    <a href="{{path('app_subject_controller_crud_new')}}">Ajouter un post ? </a>
     {%  for subject in subjects %}
     <div class="subject">
         <h2>{{ subject.title }} </h2>
